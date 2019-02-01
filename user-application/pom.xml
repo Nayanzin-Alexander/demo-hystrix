@@ -9,19 +9,41 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.nayanzin</groupId>
-    <artifactId>demo-histrix-user-application</artifactId>
+    <artifactId>demo-hystrix-user-application</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo-histrix-user-application</name>
-    <description>Demo project for Histrix</description>
+    <name>demo-hystrix-user-application</name>
+    <description>Demo project for Hystrix</description>
 
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.RC2</spring-cloud.version>
     </properties>
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
 
         <dependency>
@@ -31,6 +53,18 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -39,5 +73,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
 
 </project>
